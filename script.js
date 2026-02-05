@@ -2,7 +2,7 @@
   copy() {
     const email = document.body.dataset.email || "";
     if (!email) {
-      alert("vietinvestt.vn@gmail.com");
+      alert("vietinvestt.vn@gmail.com\n");
       return;
     }
     navigator.clipboard
