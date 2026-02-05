@@ -50,15 +50,28 @@ document.querySelectorAll("[data-action]").forEach((btn) => {
   });
 });
 
+const audio = document.querySelector("#bgm");
+const audioToggle = document.querySelector("[data-action=\"toggle-audio\"]");
+if (audio) {
+  audio.play().then(() => {
+    if (audioToggle) {
+      audioToggle.textContent = "Tắt nhạc nền";
+    }
+  }).catch(() => {});
+}
+
 document.addEventListener(
   "click",
   (event) => {
     if (event.target.closest("[data-action]")) {
       return;
     }
-    const audio = document.querySelector("#bgm");
     if (audio && audio.paused) {
-      audio.play().catch(() => {});
+      audio.play().then(() => {
+        if (audioToggle) {
+          audioToggle.textContent = "Tắt nhạc nền";
+        }
+      }).catch(() => {});
     }
   },
   { once: true },
